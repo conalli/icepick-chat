@@ -2,8 +2,10 @@
   "name": "icepick-backend",
   "version": "1.0.0",
   "description": "backend for icepick chat app",
-  "main": "index.js",
-  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node ./src/server.ts",
+    "build": "tsc && node ./dist/server.js"
+  },
   "dependencies": {
     "date-fns": "^2.23.0",
     "express": "^4.17.1",
