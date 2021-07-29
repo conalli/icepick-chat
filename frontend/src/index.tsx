@@ -5,27 +5,6 @@ import App from './App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
-
-const firebaseConfig = {
-  apiKey: process.env.apiKey,
-  authDomain: process.env.authDomain,
-  projectId: process.env.projectId,
-  storageBucket: process.env.storageBucket,
-  messagingSenderId: process.env.messagingSenderId,
-  appId: process.env.appId,
-  measurementId: process.env.measurementId,
-};
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-} else {
-  firebase.app();
-}
-const defaultAnalytics = firebase.analytics();
-const defaultAuth = firebase.auth();
-const db = firebase.firestore();
 
 ReactDOM.render(
   <React.StrictMode>
