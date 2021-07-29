@@ -6,12 +6,16 @@ import firebase, { analytics, auth, db } from "./firebase/setup"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useCollectionData } from "react-firebase-hooks/firestore"
 import { Login } from './components/Login';
-
+import { Logout } from './components/Logout';
+import { Topic } from "./components/Topic";
 
 function App() {
+  const [user] = useAuthState(auth)
+  
   return (
     <div className="App">
-      <Login />
+      {user ? <Topic /> : <Login />}
+      <Logout />
     </div>
   );
 }
