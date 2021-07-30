@@ -5,6 +5,7 @@ export const Login = () => {
   const googleLogin = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     // TODO: decide which sign in style to use
+    // TODO: handle errors https://firebase.google.com/docs/auth/web/google-signin
     // auth.signInWithRedirect(provider);
     //   await auth.getRedirectResult()
     try {
