@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
-import firebase, { analytics, auth, db } from "./firebase/setup"
+import firebase, { analytics, auth, db } from "./firebase/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useCollectionData } from "react-firebase-hooks/firestore"
 import { Login } from './components/Login';

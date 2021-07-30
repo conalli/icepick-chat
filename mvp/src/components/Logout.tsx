@@ -1,4 +1,4 @@
-import { auth } from "../firebase/setup";
+import { auth } from "../firebase/firebase";
 
 export const Logout = () => {
   return auth.currentUser && (
