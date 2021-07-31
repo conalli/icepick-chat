@@ -1,5 +1,5 @@
-// import { useState, useMemo } from "react";
-import { db } from "../firebase/firebase";
+import { useState } from "react";
+import firebase, { db, auth } from "../firebase/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore"
 import { ChatMessage } from "./ChatMessage";
 import { Redirect } from "react-router-dom";
@@ -13,17 +13,46 @@ import { Redirect } from "react-router-dom";
 // const showMoreMessages = () => {
 //   const lastVisible = 
 // }
-// TODO: fix any type
+// TODO: fix any types
+
+// interface Message {
+//   message: String;
+//   room: String;
+//   sentAt: String
+//   uid: String;
+//   userDisplayName: String;
+//   userPhotoUrl: String;
+// }
 export const ChatRoom = ({ topic }:any) => {
   const messagesRef = db.collection("messages");
-  const getMessages = messagesRef.where("room", "==", topic).orderBy("sentAt").limit(25);
-  
+  const getMessages = messagesRef.where("room", "==", topic.name).orderBy("sentAt").limit(25);
   const [messages, loading, error] = useCollectionData(getMessages, { idField: 'id' });
-  if (error) console.error(error);
-  console.log(messages);
+  const [messageInput, setMessageInput] = useState("");
+  const messageInputHandler = ((e:any) => setMessageInput(e.target.value));
+  
+  const submitHandler = async (e:any) => {
+    e.preventDefault();
+    const { uid, displayName, photoURL }:any = auth.currentUser;
+    await messagesRef.add({
+      message: messageInput,
+      room: topic.name,
+      sentAt: firebase.firestore.FieldValue.serverTimestamp(),
+      uid,
+      userDisplayName: displayName,
+      userPhotoUrl: photoURL
+    })
+    setMessageInput("");
+  }
   return (
   <>
-    {error ? <Redirect to="/" /> : loading ? <h1>Loading messages...</h1> : 
-    messages && messages.map(m => <ChatMessage key={m.id} newMessage={m}/>)}
+    <div className="prompt">Prompt: {topic.prompt}</div>
+    <ol>
+      {error ? <Redirect to="/" /> : loading ? <h1>Loading messages...</h1> : 
+      messages && messages.map(m => <li key={m.id}><ChatMessage  newMessage={m}/></li>)}
+    </ol>
+    <form onSubmit={submitHandler}>
+      <input type="text" name="messageInput" autoComplete="off" value={messageInput} onChange={messageInputHandler}/>
+      <button type="submit">Send</button>
+    </form>
   </>)
 }
