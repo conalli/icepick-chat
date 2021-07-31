@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import './App.css';
 import firebase, { analytics, auth, db } from "./firebase/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
-// import { useCollectionData } from "react-firebase-hooks/firestore"
 import { Header } from "./components/Header";
 import { Login } from './components/Login';
 import { TopicOption, topicList } from "./components/TopicOption";
+import { ChatRoom } from "./components/ChatRoom";
 
 function App() {
   const [user] = useAuthState(auth)
@@ -28,6 +28,7 @@ function App() {
             return (
               <Route key={idx} exact path={`/icebreaker/${topic.name}`}>
                 <h1>{topic.name}</h1>
+                <ChatRoom topic={topic.name}/>
               </Route>
             )
           })}
