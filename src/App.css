@@ -2,3 +2,8 @@
   text-align: center;
 }
 
+.main {
+  width: auto;
+  height: max-content;
+}
+
