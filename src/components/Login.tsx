@@ -10,13 +10,18 @@ export const Login = () => {
     //   await auth.getRedirectResult()
     try {
       await auth.signInWithPopup(provider);
-    } catch(err) {
+    } catch (err) {
       console.error(err);
     }
-  }
+  };
   return (
     <div>
-      <button onClick={googleLogin} className="bg-ip-secondary text-white font-bold py-2 px-4 rounded">Log in with Google</button>
+      <button
+        onClick={googleLogin}
+        className="bg-ip-secondary text-white font-bold py-2 px-4 rounded"
+      >
+        Log in with Google
+      </button>
     </div>
-  )
-}
+  );
+};

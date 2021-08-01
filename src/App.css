@@ -1,9 +1,13 @@
 .App {
   text-align: center;
+  --ip-black: "#0B0C10";
+  --ip-darkgrey: "#1F2833";
+  --ip-grey: "#C5C6C7";
+  --ip-primary: "#66FCF1";
+  --ip-secondary: "#45A29E";
 }
 
 .main {
   width: auto;
   height: max-content;
 }
-

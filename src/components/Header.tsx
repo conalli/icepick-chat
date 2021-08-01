@@ -1,5 +1,5 @@
 import { auth } from "../firebase/firebase";
-import { Logout } from './Logout';
+import { Logout } from "./Logout";
 export const Header = () => {
   return (
     <header className="grid grid-cols-2 mx-auto p-12 items-center">
@@ -10,5 +10,5 @@ export const Header = () => {
       </h1>
       {auth.currentUser && <Logout />}
     </header>
-  )
-}
+  );
+};
