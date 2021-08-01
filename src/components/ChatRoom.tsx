@@ -48,11 +48,11 @@ export const ChatRoom = ({ topic }:any) => {
     <div className="prompt">Prompt: {topic.prompt}</div>
     <ol>
       {error ? <Redirect to="/" /> : loading ? <h1>Loading messages...</h1> : 
-      messages && messages.map(m => <li key={m.id}><ChatMessage  newMessage={m}/></li>)}
+      messages && messages.map(m => <li key={m.id}><ChatMessage  className="flex flex-col items-center" newMessage={m}/></li>)}
     </ol>
     <form onSubmit={submitHandler}>
-      <input type="text" name="messageInput" autoComplete="off" value={messageInput} onChange={messageInputHandler}/>
-      <button type="submit">Send</button>
+      <input type="text" name="messageInput" autoComplete="off" value={messageInput} onChange={messageInputHandler} className="py-2 px-4 rounded text-black"/>
+      <button type="submit" className="bg-ip-secondary text-white font-bold py-2 px-4 rounded">Send</button>
     </form>
   </>)
 }
