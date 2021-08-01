@@ -7,8 +7,8 @@ export const Logout = () => {
   }
   // TODO: find out how to do this with history
   return auth.currentUser ? (
-    <div>
-      <button onClick={signOutHandler} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Log out</button>
+    <div className="logout col-span-1 place-self-end">
+      <button onClick={signOutHandler} className="bg-ip-secondary text-white font-bold py-2 px-4 rounded">Log out</button>
     </div>
   ) : <Redirect to="/" />
 }
