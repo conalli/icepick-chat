@@ -3,6 +3,7 @@ import firebase, { db, auth } from "../firebase/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { ChatMessage } from "./ChatMessage";
 import { Redirect } from "react-router-dom";
+import "./ChatRoom.css";
 
 // TODO: set up pagination
 // const [lastMessage, setLastMessage] = useState();
@@ -51,7 +52,7 @@ export const ChatRoom = ({ topic }: any) => {
   return (
     <>
       <div className="prompt">Prompt: {topic.prompt}</div>
-      <ol>
+      <ol className="chat-container">
         {error ? (
           <Redirect to="/" />
         ) : loading ? (
