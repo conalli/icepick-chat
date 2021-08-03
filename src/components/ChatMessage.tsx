@@ -14,7 +14,7 @@ export const ChatMessage = ({ newMessage }: any) => {
         alt={`${userDisplayName} profile`}
         className="inline object-cover w-12 h-12 mr-2 rounded-full order-2"
       />
-      <div className="h-0.5"></div>
+      <div className="h-0.5" />
       <p className="order-3">
         <p className="order-4 text-ip-secondary">{`${messageType}`}</p>
         {message}
